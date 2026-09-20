@@ -162,8 +162,8 @@
             <div><dt>Solution</dt><dd>A live SMS agent answers prospect questions using a RAG-based FAQ lookup, books tours, and updates the CRM in real time. A nightly job then has a second, independent AI review the first agent's work.</dd></div>
             <div><dt>Result</dt><dd>During testing, the QC pass caught two real classification errors on its own.</dd></div>
           </dl>
-          <ul class="stack"><li>Python</li><li>LangGraph</li><li>RAG</li><li>SMS</li><li>CRM API</li><li>Scheduled jobs</li></ul>
-          <p class="note">The code is public and runs locally with the SMS and CRM services mocked. <a class="inline" href="https://github.com/youssefsalah202/leasing-agent-demo" target="_blank" rel="noopener">View code on GitHub ↗</a></p>
+          <ul class="stack"><li>Python</li><li>LangGraph</li><li>RAG</li><li>SMS</li><li>Monday.com API</li><li>Scheduled jobs</li></ul>
+          <p class="note">The code is public. The CRM runs against a real Monday.com board through its API; the SMS service is simulated, and there is a browser demo you can run locally. <a class="inline" href="https://github.com/youssefsalah202/leasing-agent-demo" target="_blank" rel="noopener">View code on GitHub ↗</a></p>
         </div>
 
         <div class="case-visual">
@@ -173,6 +173,16 @@
             <div class="pipe-line"></div>
             <div class="pipe-row night"><span class="node small">Nightly job</span><i>→</i><span class="node small accent2">Second AI reviews</span><i>→</i><span class="node small">Flags errors</span></div>
           </div>
+          <figure class="shot">
+            <div class="code-bar"><i></i><i></i><i></i><span>browser demo · chat + lead record</span></div>
+            <a class="shot-link" href="leasing-chat.png" target="_blank" rel="noopener" title="Open full size"><img src="leasing-chat.png" width="1543" height="807" loading="lazy" alt="Screenshot of the leasing assistant demo: the agent confirms a tour for Friday at 4 PM, and the lead record beside the chat shows the name Ali, status tour_scheduled and the booked tour, with a badge saying the CRM is live on Monday.com."></a>
+            <figcaption>The agent books a tour. The lead record next to the chat updates from the live Monday.com board.</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="code-bar"><i></i><i></i><i></i><span>Monday.com · Leasing Leads board</span></div>
+            <a class="shot-link" href="leasing-board.png" target="_blank" rel="noopener" title="Open full size"><img src="leasing-board.png" width="1472" height="623" loading="lazy" alt="Screenshot of the Monday.com Leasing Leads board with two leads, Ahmed and Ali, both with status tour_scheduled, their phone numbers, unit interest and tour details."></a>
+            <figcaption>The same leads on the real Monday.com board, written by the agent. Phone numbers are fake test numbers.</figcaption>
+          </figure>
         </div>
       </article>
 
