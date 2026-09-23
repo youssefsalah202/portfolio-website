@@ -52,43 +52,6 @@
     items.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ---- Agent trace typing (illustrative example) ---- */
-  var trace = document.getElementById('trace');
-  var lines = [
-    ['u', 'client › '], ['', 'Trip to Dubai, Dec, 2 people, 2000 USD\n'],
-    ['a', 'agent  › '], ['', 'thinking…\n\n'],
-    ['t', 'tool_use   '], ['', 'update_booking_field(destination="Dubai")\n'],
-    ['g', 'tool_result '], ['', '{"ok": true}\n'],
-    ['t', 'tool_use   '], ['', 'search_flights(CAI → DXB, 2 pax)\n'],
-    ['g', 'tool_result '], ['', '12 offers found\n'],
-    ['t', 'tool_use   '], ['', 'search_hotels(Dubai, 4 nights)\n'],
-    ['g', 'tool_result '], ['', '5 rates in budget\n\n'],
-    ['a', 'agent  › '], ['', 'Here is a plan within budget. Want me to lock it in?']
-  ];
-  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-  function renderAll() {
-    trace.innerHTML = lines.map(function (l) { return l[0] ? '<span class="' + l[0] + '">' + esc(l[1]) + '</span>' : esc(l[1]); }).join('');
-  }
-  if (reduce) { renderAll(); }
-  else {
-    var li = 0, ci = 0, html = '';
-    (function tick() {
-      if (li >= lines.length) { trace.innerHTML = html + '<span class="caret"></span>'; return; }
-      var cls = lines[li][0], txt = lines[li][1];
-      ci += cls ? txt.length : 2; // labels appear instantly, text types
-      if (ci >= txt.length) {
-        html += cls ? '<span class="' + cls + '">' + esc(txt) + '</span>' : esc(txt);
-        li++; ci = 0;
-        trace.innerHTML = html + '<span class="caret"></span>';
-        setTimeout(tick, cls ? 40 : 160);
-      } else {
-        var part = esc(txt.slice(0, ci));
-        trace.innerHTML = html + (cls ? '<span class="' + cls + '">' + part + '</span>' : part) + '<span class="caret"></span>';
-        setTimeout(tick, 22);
-      }
-    })();
-  }
-
   /* ---- Neural-network background ---- */
   var cv = document.getElementById('net');
   var ctx = cv.getContext('2d');

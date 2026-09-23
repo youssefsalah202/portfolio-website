@@ -70,10 +70,32 @@
         </ul>
       </div>
 
-      <div class="hero-visual reveal" aria-label="Example of an AI agent tool-call trace">
+      <div class="hero-visual reveal" aria-label="My projects">
         <div class="term">
-          <div class="term-bar"><i></i><i></i><i></i><span>agent-trace · example</span></div>
-          <pre id="trace" class="term-body" aria-live="off"></pre>
+          <div class="term-bar"><i></i><i></i><i></i><span>projects · youssef</span></div>
+          <div class="term-body proj-list">
+            <div class="ls-cmd"><span class="u">$</span> ls ~/projects <span class="u">--sort=impact</span></div>
+            <a class="proj-row" href="#proj-wanderway">
+              <span class="proj-num">01</span>
+              <span class="proj-main"><span class="proj-name">wanderway/</span><span class="proj-desc">WhatsApp travel assistant</span></span>
+              <span class="proj-kind">Client project</span>
+            </a>
+            <a class="proj-row" href="#proj-leasing">
+              <span class="proj-num">02</span>
+              <span class="proj-main"><span class="proj-name">leasing-agent/</span><span class="proj-desc">SMS lead response + CRM automation</span></span>
+              <span class="proj-kind">Personal project</span>
+            </a>
+            <a class="proj-row" href="#proj-edtech">
+              <span class="proj-num">03</span>
+              <span class="proj-main"><span class="proj-name">edu-rag-tutor/</span><span class="proj-desc">Trilingual EdTech RAG tutor</span></span>
+              <span class="proj-kind">Learning demo</span>
+            </a>
+            <a class="proj-row" href="#proj-mcp">
+              <span class="proj-num">04</span>
+              <span class="proj-main"><span class="proj-name">mcp-stock-demo/</span><span class="proj-desc">Claude + MCP tool use</span></span>
+              <span class="proj-kind">Learning demo</span>
+            </a>
+          </div>
         </div>
         <div class="float-card fc-1"><span class="fc-k">Tests</span><span class="fc-v">Real APIs</span></div>
         <div class="float-card fc-2"><span class="fc-k">Approach</span><span class="fc-v">Tool-calling agents</span></div>
@@ -85,7 +107,7 @@
       <div class="fact"><b>5th</b><span>place, national accessibility hackathon</span></div>
       <div class="fact"><b>Oracle</b><span>Certified Generative AI Professional</span></div>
       <div class="fact"><b>MSc</b><span>Applied AI, in progress (Germany)</span></div>
-      <div class="fact"><b>7</b><span>AI &amp; ML projects, from computer vision to LLM agents</span></div>
+      <div class="fact"><b>8</b><span>AI &amp; ML projects, from computer vision to LLM agents</span></div>
     </section>
 
     <!-- ABOUT -->
@@ -121,8 +143,36 @@
         <p class="sub">Client names are kept private. The engineering is real.</p>
       </div>
 
+      <!-- EdTech RAG tutor -->
+      <article class="case flip reveal" id="proj-edtech">
+        <div class="case-copy">
+          <div class="tags"><span>Learning demo</span><span>EdTech</span><span>Multilingual RAG</span></div>
+          <h3>Trilingual EdTech RAG tutor with cost-aware retrieval</h3>
+          <dl class="pss">
+            <div><dt>Goal</dt><dd>Built to close two specific skill gaps — LiteLLM and EdTech-shaped RAG — found while applying to a real job posting, so the proposal came with working code instead of just promises.</dd></div>
+            <div><dt>Built</dt><dd>A LangGraph tutor that answers curriculum questions in Arabic, English or French, whichever the student asks in. Every LLM call goes through LiteLLM (not the Anthropic SDK directly) with real token and cost logged per call. Retrieval is two-stage — a wide vector search, then a cross-encoder re-ranks it down to the top 3 — and stays scoped to the student's current curriculum topic by default, widening to the full curriculum only when that comes back empty. Each student is tracked by id across turns, so progress and conversation memory both persist.</dd></div>
+            <div><dt>Quality</dt><dd>Offline tests check the real claims, not just that the code runs: cross-lingual retrieval across all three languages, and that the topic filter actually excludes other topics instead of just returning everything.</dd></div>
+          </dl>
+          <ul class="stack"><li>Python</li><li>LangGraph</li><li>LiteLLM</li><li>Chroma</li><li>Cross-encoder re-ranking</li><li>FastAPI</li></ul>
+          <p class="note">Sample curriculum content (physics, biology) — a skills demo, not a live course. Everything else (LiteLLM calls, multilingual retrieval, re-ranking, per-student memory) is real, working code, not a mock.</p>
+        </div>
+
+        <div class="case-visual">
+          <div class="pipe" aria-label="System diagram">
+            <div class="pipe-row"><span class="node">Question · AR / EN / FR</span><i>→</i><span class="node accent">AI agent</span><i>→</i><span class="node">Answer + citation</span></div>
+            <div class="pipe-side"><span class="node small">search_curriculum · scoped to current topic → re-ranked top 3</span></div>
+            <div class="pipe-side"><span class="node small accent2">nothing there? → widens to the full curriculum</span></div>
+          </div>
+          <figure class="shot">
+            <div class="code-bar"><i></i><i></i><i></i><span>localhost · trilingual tutor demo</span></div>
+            <a class="shot-link" href="edu-rag-tutor-demo.png" target="_blank" rel="noopener" title="Open full size"><img src="edu-rag-tutor-demo.png" width="1527" height="784" loading="lazy" alt="Screenshot of the trilingual EdTech RAG tutor demo: a student asks about Newton's third law in English and gets a sourced answer, while the side panel shows real session cost from LiteLLM (3 turns, 7,354 tokens, $0.0206) and student progress tracking the current topic as newtons_laws."></a>
+            <figcaption>Real output: the reply, plus live LiteLLM cost and per-student progress tracking beside it.</figcaption>
+          </figure>
+        </div>
+      </article>
+
       <!-- Wanderway -->
-      <article class="case reveal">
+      <article class="case reveal" id="proj-wanderway">
         <div class="case-copy">
           <div class="tags"><span>Client project</span><span>Travel</span><span>WhatsApp</span></div>
           <h3>WhatsApp trip-planning assistant for a travel agency</h3>
@@ -153,7 +203,7 @@
       </article>
 
       <!-- Leasing -->
-      <article class="case flip reveal">
+      <article class="case flip reveal" id="proj-leasing">
         <div class="case-copy">
           <div class="tags"><span>Personal project</span><span>Leasing</span><span>SMS · CRM</span></div>
           <h3>SMS lead-response &amp; CRM automation for leasing</h3>
@@ -187,7 +237,7 @@
       </article>
 
       <!-- MCP demo -->
-      <article class="case reveal">
+      <article class="case reveal" id="proj-mcp">
         <div class="case-copy">
           <div class="tags"><span>Learning demo</span><span>MCP</span><span>Tool use</span></div>
           <h3>MCP + Claude stock assistant with a chat UI</h3>
