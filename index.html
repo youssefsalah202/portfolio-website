@@ -80,18 +80,23 @@
               <span class="proj-main"><span class="proj-name">wanderway/</span><span class="proj-desc">WhatsApp travel assistant</span></span>
               <span class="proj-kind">Client project</span>
             </a>
-            <a class="proj-row" href="#proj-leasing">
+            <a class="proj-row" href="#proj-clinic">
               <span class="proj-num">02</span>
+              <span class="proj-main"><span class="proj-name">clinic-assistant/</span><span class="proj-desc">Arabic WhatsApp AI receptionist</span></span>
+              <span class="proj-kind">Own product</span>
+            </a>
+            <a class="proj-row" href="#proj-leasing">
+              <span class="proj-num">03</span>
               <span class="proj-main"><span class="proj-name">leasing-agent/</span><span class="proj-desc">SMS lead response + CRM automation</span></span>
               <span class="proj-kind">Personal project</span>
             </a>
             <a class="proj-row" href="#proj-edtech">
-              <span class="proj-num">03</span>
+              <span class="proj-num">04</span>
               <span class="proj-main"><span class="proj-name">edu-rag-tutor/</span><span class="proj-desc">Trilingual EdTech RAG tutor</span></span>
               <span class="proj-kind">Learning demo</span>
             </a>
             <a class="proj-row" href="#proj-mcp">
-              <span class="proj-num">04</span>
+              <span class="proj-num">05</span>
               <span class="proj-main"><span class="proj-name">mcp-stock-demo/</span><span class="proj-desc">Claude + MCP tool use</span></span>
               <span class="proj-kind">Learning demo</span>
             </a>
@@ -107,7 +112,7 @@
       <div class="fact"><b>5th</b><span>place, national accessibility hackathon</span></div>
       <div class="fact"><b>Oracle</b><span>Certified Generative AI Professional</span></div>
       <div class="fact"><b>MSc</b><span>Applied AI, in progress (Germany)</span></div>
-      <div class="fact"><b>8</b><span>AI &amp; ML projects, from computer vision to LLM agents</span></div>
+      <div class="fact"><b>9</b><span>AI &amp; ML projects, from computer vision to LLM agents</span></div>
     </section>
 
     <!-- ABOUT -->
@@ -199,6 +204,34 @@
           <div class="flow" aria-label="Agent graph">
             <span>load_context</span><i>→</i><span>generate</span><i>⇄</i><span>execute_tools</span><i>→</i><span>respond</span>
           </div>
+        </div>
+      </article>
+
+      <!-- Clinic Assistant -->
+      <article class="case flip reveal" id="proj-clinic">
+        <div class="case-copy">
+          <div class="tags"><span>Own product</span><span>Healthcare</span><span>WhatsApp</span></div>
+          <h3>Arabic WhatsApp AI receptionist for clinics, deployed end to end</h3>
+          <dl class="pss">
+            <div><dt>Problem</dt><dd>Clinic receptionists answer the same price and availability questions all day in Egyptian or Gulf Arabic, and an urgent message can get buried in the queue.</dd></div>
+            <div><dt>Solution</dt><dd>My own product, built solo: a Claude tool-calling agent that answers in the patient's dialect from the clinic's real prices and hours, and books, reschedules or cancels appointments against live availability with no double booking. Voice notes go through speech-to-text into the same agent, and a code-level safety net raises an urgent staff alert even if the model misses it. Staff get an Arabic dashboard (schedule, chat takeover, per-patient history, audit log) and 5 n8n workflows for reminders, review requests and backups.</dd></div>
+            <div><dt>Result</dt><dd>Took it past demo stage: Dockerized and deployed to a cloud VPS with automatic HTTPS, a health-check endpoint watching the database, backups and AI error rate, and a permanent, non-expiring WhatsApp Business API production token, so it's ready for a real clinic, not just a sandbox. Covered by 130+ offline tests and 13 live conversation scenarios against the real model, at roughly $0.11 per booking conversation.</dd></div>
+          </dl>
+          <ul class="stack"><li>Python</li><li>FastAPI</li><li>Claude</li><li>WhatsApp Cloud API</li><li>n8n</li><li>Docker</li><li>SQLModel</li></ul>
+          <p class="note">Built for a sample dental clinic with invented patient data — the AI agent, dashboard, automations and cloud deployment are all real, working code.</p>
+        </div>
+
+        <div class="case-visual">
+          <figure class="shot">
+            <div class="code-bar"><i></i><i></i><i></i><span>WhatsApp demo · booking in Egyptian Arabic</span></div>
+            <a class="shot-link" href="clinic-booking-chat.png" target="_blank" rel="noopener" title="Open full size"><img src="clinic-booking-chat.png" width="2160" height="1500" loading="lazy" alt="Screenshot of the clinic WhatsApp demo: a patient books a teeth cleaning for Sunday evening in Egyptian Arabic, the assistant confirms the slot and doctor, and a side panel shows the real book_appointment tool call and its result."></a>
+            <figcaption>A real booking conversation, with the actual tool call the agent made shown alongside it.</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="code-bar"><i></i><i></i><i></i><span>Arabic staff dashboard · today's schedule</span></div>
+            <a class="shot-link" href="clinic-dashboard.png" target="_blank" rel="noopener" title="Open full size"><img src="clinic-dashboard.png" width="2160" height="1350" loading="lazy" alt="Screenshot of the Arabic staff dashboard showing today's appointment schedule, an urgent case flagged for staff response, and daily stats for conversations, cancellations and bookings made by the assistant."></a>
+            <figcaption>The clinic's side: today's bookings, urgent cases flagged first, all in Arabic.</figcaption>
+          </figure>
         </div>
       </article>
 
@@ -305,7 +338,7 @@
         </div>
         <div class="card reveal">
           <h3>Backend</h3>
-          <ul class="pills"><li>Python</li><li>FastAPI</li><li>SQLModel / SQLite</li><li>REST &amp; webhooks</li><li>WhatsApp Cloud API</li><li>Chainlit</li></ul>
+          <ul class="pills"><li>Python</li><li>FastAPI</li><li>SQLModel / SQLite</li><li>REST &amp; webhooks</li><li>WhatsApp Cloud API</li><li>n8n</li><li>Chainlit</li></ul>
         </div>
         <div class="card reveal">
           <h3>Machine learning</h3>
@@ -317,7 +350,7 @@
         </div>
         <div class="card reveal">
           <h3>Tools</h3>
-          <ul class="pills"><li>Git</li><li>pytest</li><li>Jupyter</li><li>Colab</li><li>AWS SageMaker</li><li>C++</li></ul>
+          <ul class="pills"><li>Git</li><li>pytest</li><li>Docker</li><li>Jupyter</li><li>Colab</li><li>AWS SageMaker</li><li>C++</li></ul>
         </div>
         <div class="card b-wide reveal">
           <h3>How I work</h3>
